@@ -12,7 +12,7 @@ var VSHADER_SOURCE =
 // Fragment shader program
 var FSHADER_SOURCE =
     'void main() {\n' +
-    '   gl_FragColor = vec4(0.0, 1.0, 0.0, 1.0);\n' + // Set the color
+    '   gl_FragColor = vec4(1.0, 1.0, 0.0, 1.0);\n' + // Set the color
     '}\n';
 
 function main(){
@@ -38,7 +38,7 @@ function main(){
     // var a_PointSize = gl.getAttribLocation(gl.program, 'a_PointSize');
 
     // Pass vertex position to attribute variable
-    gl.vertexAttrib3f(a_Position, 0.5, 0.0, 0.0);
+    //gl.vertexAttrib3f(a_Position, 0.5, 0.0, 0.0);
     // gl.vertexAttrib1f(a_PointSize, 50.0);
     // Register function (event handler) to be called on a mouse press
     canvas.onmousedown = function(ev) { click(ev, gl, canvas, a_Position); };
