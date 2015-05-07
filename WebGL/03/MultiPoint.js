@@ -29,24 +29,51 @@ function main(){
         return;
     }
 
-    // get the storage location of attribute value
-    var a_Position = gl.getAttribLocation(gl.program, 'a_Position');
-    if(a_Position < 0){
-        console.log('Failed to get the storage location of a_Position.');
+    // Set the positions of vertices
+    var n = initVertexBuffers(gl);
+    if (n < 0) {
+        console.log('Failed to set the positions of the vertices.');
         return;
     }
-    // var a_PointSize = gl.getAttribLocation(gl.program, 'a_PointSize');
 
-    // Pass vertex position to attribute variable
-    //gl.vertexAttrib3f(a_Position, 0.5, 0.0, 0.0);
-    // gl.vertexAttrib1f(a_PointSize, 50.0);
     // Register function (event handler) to be called on a mouse press
-    canvas.onmousedown = function(ev) { click(ev, gl, canvas, a_Position); };
+    //canvas.onmousedown = function(ev) { click(ev, gl, canvas, a_Position); };
 
     gl.clearColor(0.0, 0.0, 0.0, 1.0);
 
     gl.clear(gl.COLOR_BUFFER_BIT);
 
+    gl.drawArrays(gl.POINTS, 0, n); // n is 3
+
+}
+
+function initVertexBuffers(gl) {
+    var vertices = new Float32Array([
+        0.0, 0.5, -0.5, -0.5, 0.5, -0.5
+    ]);
+    var n = 3; // the number of vertices
+
+    // Create a buffer object
+    var vertexBuffer = gl.createBuffer();
+    if (!vertexBuffer) {
+        console.log('Failed to create the buffer object.');
+        return -1;
+    }
+
+    // Bind the buffer object to target
+    gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
+    // Write data into the buffer object
+    gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
+
+    var a_Position = gl.getAttribLocation(gl.program, 'a_Position');
+
+    // Assign the buffer object to a_Position variable
+    gl.vertexAttribPointer(a_Position, 2, gl.FLOAT, false, 0, 0);
+
+    // Enable the assignment to a_Position variable
+    gl.enableVertexAttribArray(a_Position);
+
+    return n;
 }
 
 var g_points  = []; // the array for a mouse press
