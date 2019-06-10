@@ -1,0 +1,68 @@
+.tweet {
+    display: flex;
+    /* align-items is stretch by default, flex-direciton is row by default */
+    align-items: flex-start;
+    border: 1px solid #ccc;
+    padding: 10px;
+    /*
+    change font, all children elements will inherit.
+     */
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 14px;
+}
+
+.name {
+    /* same as font-weight: bold; normal = 400 */
+    font-weight: 600;
+}
+
+.handle,
+.time {
+    color: #657786;
+}
+
+.handle::after {
+    content: '\00b7';
+}
+
+.content {
+    flex: 1;
+}
+/* set margin to an element's right side and bottom side other than change left and top margin.
+   because in general the document flow is left to right and top to bottom, every element dependents on its left and top element.
+
+   Every CSS element dependents on its left and top element, exception position: absolute;
+ */
+.avatar {
+    margin-right: 10px;
+}
+
+.actions {
+    display: flex;
+    padding: 0;
+}
+.actions li {
+    list-style: none;
+    margin-right: 30px;
+}
+.actions button {
+    border: none;
+    color: #657786;
+    font-size: 16px;
+    cursor: pointer;
+}
+.actions button:hover {
+    color: #1da1f2;
+}
+
+p, ul {
+    margin: 0;
+}
+.author-meta, p {
+    margin-bottom: 1em;
+}
+.avatar {
+    margin-right: 10px;
+    width: 48px;
+    border-radius: 50%;
+}

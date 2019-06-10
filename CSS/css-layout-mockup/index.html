@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>A CSS layout mockup implementation</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="layout.css">
+</head>
+<body>
+
+<!-- A twitter like layout -->
+<article class="tweet">
+    <img class="avatar" src="http://www.gravatar.com/avatar" alt="Name">
+    <div class="content">
+        <div class="author-meta">
+            <span>@Handle</span>
+            <span>Name</span>
+            <span>3h ago</span>
+        </div>
+        <p>
+            Some insigntful message.
+        </p>
+        <ul class="actions">
+            <li><button>
+                <i class="fas fa-reply" aria-hidden="true"></i>
+                <span class="sr-only">Reply</span>
+            </button></li>
+            <li><button><i class="fas fa-retweet" aria-hidden="true"></i><span class="sr-only">Retweet</span></button></li>
+            <li><button>
+                <i class="fas fa-heart" aria-hidden="true"></i>
+                <span class="sr-only">Like</span>
+            </button></li>
+            <li><button><span aria-hidden="true">...</span><span class="sr-only">More Actions</span></button></li>
+        </ul>
+    </div>
+</article>
+</body>
+</html>

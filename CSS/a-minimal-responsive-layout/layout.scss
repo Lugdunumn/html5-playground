@@ -1,0 +1,75 @@
+.container {
+    /* horizontal centered */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+$breakpoints: (
+    // Extra small screen / phone
+        xs: 0,
+    // small screen / phone
+        sm: 576px,
+    // Medium sreen / tablet
+        md: 768px,
+    // Large screen / desktop
+        lg: 992px,
+    // Extra large screen / wide desktop
+        xl: 1200px
+);
+$container-max-widths: (
+        xs: none,
+        sm: 540px,
+        md: 720px,
+        lg: 960px,
+        xl: 1140px
+);
+
+@each $device, $breakpoint in $breakpoints {
+    @media only screen and (min-width: $breakpoint) {
+        .container {
+            max-width: map-get($container-max-widths, $device);
+        }
+    }
+}
+
+.demo-example {
+    margin-top: 2em;
+    box-sizing: border-box;
+    padding-top: .75em;
+    padding-bottom: .75em;
+    background-color: rgba(86,61,124,.15);
+    border: 1px solid rgba(86,61,124,.2);
+    text-align: center;
+}
+
+$columns: 12;
+
+/* set all flex elements' flex-basis to 0,
+   so that flex element has no width before grow or shrink, all have the same width,
+   therefore main size is equally divided into every flex element, they're now have same width.
+   */
+.row {
+    display: flex;
+    .col {
+        flex-grow: 1;
+        flex-basis: 0;
+
+        // line wrap
+        &.is-multiline {
+            flex-wrap: wrap;
+        }
+
+        @for $i from 1 through 12 {
+            &.is-#{is} {
+                // disable flex element's flexibility, use width instead.
+                // 禁用 Flex 项目的伸缩特性，使用百分比 width 指定宽度。
+                // equals to flex-shrink: 0; flex-grow: 0; flex-basis: 0;
+                flex: none;
+                width: percentage($i / 12);
+            }
+            &.is-offset-#{i} {
+                margin-left: percentage($i / 12);
+            }
+        }
+    }
+}

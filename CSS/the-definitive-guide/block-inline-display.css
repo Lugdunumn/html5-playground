@@ -1,0 +1,12 @@
+/*
+reverse p and em display default display property, a block box is generated in a inline box
+ */
+p {display: inline;}
+em {
+    display: block;
+}
+/*
+give display to xml elements, as they are by default all inline. then they will be treated as div
+ */
+book, maintitle, subtitle, author, isbn { display: block;}
+publisher, pubdate {display: inline;}
