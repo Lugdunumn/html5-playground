@@ -33,7 +33,6 @@ $container-max-widths: (
 }
 
 .demo-example {
-    margin-top: 2em;
     box-sizing: border-box;
     padding-top: .75em;
     padding-bottom: .75em;
@@ -50,17 +49,19 @@ $columns: 12;
    */
 .row {
     display: flex;
+
+    // line wrap
+    &.is-multiline {
+        flex-wrap: wrap;
+    }
+
     .col {
         flex-grow: 1;
         flex-basis: 0;
 
-        // line wrap
-        &.is-multiline {
-            flex-wrap: wrap;
-        }
 
         @for $i from 1 through 12 {
-            &.is-#{is} {
+            &.is-#{$i} {
                 // disable flex element's flexibility, use width instead.
                 // 禁用 Flex 项目的伸缩特性，使用百分比 width 指定宽度。
                 // equals to flex-shrink: 0; flex-grow: 0; flex-basis: 0;
